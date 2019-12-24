@@ -1,2 +1,2 @@
 # Activator-App
-Activator Mobile Application - Flutter
+Activator Mobile Application

@@ -39,13 +39,18 @@
 //        child: Column(
 //          mainAxisAlignment: MainAxisAlignment.center,
 //          children: <Widget>[
+<<<<<<< HEAD
 //            Text("I'm a Reader"),
+=======
+//            Text("I'm a Reader from pamal pamal"),
+>>>>>>> 0e003a736046db963284dab25cc226ebc5130665
 //          ],
 //        ),
 //      ),
 //    );
 //  }
 //}
+<<<<<<< HEAD
 
 import 'package:flutter/material.dart';
 void main(){
@@ -97,4 +102,34 @@ class HomeScreen extends StatelessWidget{
       ),
     );
   }
+=======
+
+// create login page
+
+//import 'material';
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MaterialApp(
+    title: "login app",
+    home: HomeScreen(),
+  ));
+}
+
+class HomeScreen extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+     
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+
+        color: Colors.lightGreenAccent,
+      ),
+    );
+  }
+
+>>>>>>> 0e003a736046db963284dab25cc226ebc5130665
 }

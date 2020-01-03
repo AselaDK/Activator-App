@@ -30,27 +30,55 @@ class HomeScreen extends StatelessWidget {
             height: 300,
             color: Colors.yellow,
             child: Column(
-
+              mainAxisAlignment: MainAxisAlignment.center, //coloum eke ewa center karaganna one hinda
               children: <Widget>[
+                Container(
+                  width: 250,
+
+                  child:Material(  // meka gahanne textfild ekatai icon ekatai yatin
+                    // ehema unama icon ekai text field ekain yatin penawa
+
+                   elevation: 5.0,
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    color: Colors.deepOrange,
 
 
-                Material(
+                    //column eka athule thinne
 
-                 elevation: 5.0,
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  color: Colors.deepOrange,
+                   child: Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child :Icon(Icons.person,color: Colors.black,size: 30,),
+                      ),
 
-                  child :TextField(
+                     Container(
+                       width: 200,
+                       child:TextField(
 
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.black
-                      )
+                           decoration: InputDecoration(
+                             border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                             fillColor: Colors.white,
+                             filled: true, //Meka damme naththam white kiyala penne naha
+
+                           ),
+                           style: TextStyle(
+                               fontSize: 20.0,
+                               color: Colors.black
+                           )
+                       ),
+
+                     )
+                    ],
                   ),
 
 
-                )
 
+
+
+                )
+                 )
 
               ],
             ),

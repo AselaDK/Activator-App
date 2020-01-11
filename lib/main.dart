@@ -1,6 +1,9 @@
 
 
+import 'package:activator/Ui/CustomInputField.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import './Ui/CustomInputField.dart';
 void main(){
   runApp(MaterialApp(
     title: "login app",
@@ -14,76 +17,74 @@ class HomeScreen extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
 
-     appBar: AppBar(
-       backgroundColor: Colors.red,
-       title: Text("this is app title"),
 
-     ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        color: Colors.blue,
-        child: Center(
+        color: Colors.white,
 
-          child: Container(
-            width: 300,
-            height: 300,
-            color: Colors.yellow,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, //coloum eke ewa center karaganna one hinda
-              children: <Widget>[
-                Container(
-                  width: 250,
+        child: Stack(
 
-                  child:Material(  // meka gahanne textfild ekatai icon ekatai yatin
-                    // ehema unama icon ekai text field ekain yatin penawa
-
-                   elevation: 5.0,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    color: Colors.deepOrange,
+          children: <Widget>[
+           Align(
+             alignment: Alignment.bottomRight,
+             widthFactor: 0.5,
+             heightFactor: 0.5,
 
 
-                    //column eka athule thinne
+             child:  Material(
+               color: Colors.lightGreen,
+               borderRadius: BorderRadius.all(Radius.circular(200)),
+               child: Container(
 
-                   child: Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child :Icon(Icons.person,color: Colors.black,size: 30,),
+
+                 width: 400,
+                 height: 400,
+               ),
+             ),
+           ),
+
+
+            Center(
+
+              child: Container(
+                width: 400,
+                height: 400,
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, //coloum eke ewa center karaganna one hinda
+                  children: <Widget>[
+                    Image.asset('images/actlogo1.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    CustomInputField(Icon(Icons.person,color:Colors.white),'User Name'),
+                    CustomInputField(Icon(Icons.lock,color: Colors.white,),'Password'),
+                    Container(
+                      width: 150,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                        onPressed: (){},
+                        color: Colors.lightGreen,
+                        textColor: Colors.white,
+                        child: Text('Login',
+                          style: TextStyle(
+                            fontSize: 20.0,
+
+                          ),
+
+                        ),
                       ),
+                    )
 
-                     Container(
-                       width: 200,
-                       child:TextField(
-
-                           decoration: InputDecoration(
-                             border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                             fillColor: Colors.white,
-                             filled: true, //Meka damme naththam white kiyala penne naha
-
-                           ),
-                           style: TextStyle(
-                               fontSize: 20.0,
-                               color: Colors.black
-                           )
-                       ),
-
-                     )
-                    ],
-                  ),
-
-
-
-
-
-                )
-                 )
-
-              ],
+                  ],
+                ),
+              ),
             ),
-          ),
+          ],
         ),
+
+
       ),
     );
   }

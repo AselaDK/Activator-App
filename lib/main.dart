@@ -1,5 +1,5 @@
-
-
+import 'package:async/async.dart';
+import 'package:http/http.dart'as http;
 import 'package:activator/Ui/CustomInputField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +8,19 @@ void main(){
   runApp(MaterialApp(
     title: "login app",
     home: HomeScreen()
+
   ));  // use material app
 }
 
 class HomeScreen extends StatelessWidget {
+
+  String url='https://ox76ludg9l.execute-api.ap-southeast-2.amazonaws.com/password/passoword/tk@123';
+
+  Future<String> makeRequest() async{
+    var response=await http.get(Uri.encodeFull(url), headers: {"Accept":"application/json"});
+    print(response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -64,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                       width: 150,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                        onPressed: (){},
+                        onPressed:makeRequest,
                         color: Colors.lightGreen,
                         textColor: Colors.white,
                         child: Text('Login',

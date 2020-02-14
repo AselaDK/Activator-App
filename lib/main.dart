@@ -6,13 +6,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './Ui/CustomInputField.dart';
 import "package:activator/dashboard.dart";
-void main(){
-  runApp(MaterialApp(
 
-    home: login(),
+void main()=>runApp(Myapp());
 
-  ));  // use material app
+class Myapp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      home: login(),
+    );
+  }
 }
+
+
+
 
 
 

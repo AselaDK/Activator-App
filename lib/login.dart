@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
-import 'package:activator/Ui/CustomInputField.dart';
 import 'package:activator/dashboard.dart';
+import 'package:activator/global.dart' as global;
 
 import 'dart:async';
 import 'dart:convert';
@@ -13,7 +13,10 @@ class login extends StatefulWidget {
 
 class _loginState extends State<login> {
   String Logurl='https://ox76ludg9l.execute-api.ap-southeast-2.amazonaws.com/ActivatorAppLogin/username/';
-  String url='https://ox76ludg9l.execute-api.ap-southeast-2.amazonaws.com/ActivatorAppLogin/username/tharindu_prabath';
+
+  String readerLogurl="https://ox76ludg9l.execute-api.ap-southeast-2.amazonaws.com/readers"; //original reader
+  
+  //String url='https://ox76ludg9l.execute-api.ap-southeast-2.amazonaws.com/ActivatorAppLogin/username/tharindu_prabath';
   String userName;
   var password;
   final GlobalKey<FormState> _formKey=GlobalKey<FormState>(); // making of form key
@@ -48,23 +51,22 @@ class _loginState extends State<login> {
     _formKey.currentState.save();
     //print(userName);
     print(password);
-    String ak=Logurl + userName;
+    String ak=readerLogurl + userName;
    // print(ak);
     var response=await http.get(Uri.encodeFull(ak), headers: {"Accept":"application/json"});
     var Reader_info_list = json.decode(response.body);
-    Map<String,dynamic> sahan=jsonDecode(response.body);
-  //  print("hellow ,${sahan["Items"][0]["password"]["S"]}");
-    //print(Reader_info_list["Items"][0]["password"]["S"]);
-    var p=sahan["Items"][0]["password"]["S"];
-    print("this is p,$p");
- //   var DbPassword=Reader_info_list["Items"][0]["password"]["S"];
-     // DbPassword.toInt();
-//    String rubi = 'good';
-//    String ore = 'good';
-
-    //print(DbPassword.toString());
-    if(p=="3"){
+    Map<String,dynamic> loginuser=jsonDecode(response.body);
+    var p=loginuser["Items"][0]["password"]["S"];
+    var q=loginuser["Items"][0]["username"]["S"];
+    print(q);
+    //print(loginuser);
+    if(p.trim() !=password){
+      global.GlobalLoginUser=loginuser;
+      //print(global.GlobalLoginUser);
       print("password is correct");
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context)=>dashboard())
+      );
     }
     else{
       print("password is uncorrect");
@@ -166,12 +168,7 @@ class _loginState extends State<login> {
                     Container(
                       width: 150,
                       child: RaisedButton(
-                        onLongPress: (){
 
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context)=>dashboard())
-                          );
-                        },
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
                         onPressed:log,
                         //makeRequest,

@@ -51,16 +51,16 @@ class _loginState extends State<login> {
     _formKey.currentState.save();
     //print(userName);
     print(password);
-    String ak=readerLogurl + userName;
+    String ak=Logurl + userName;
    // print(ak);
     var response=await http.get(Uri.encodeFull(ak), headers: {"Accept":"application/json"});
     var Reader_info_list = json.decode(response.body);
     Map<String,dynamic> loginuser=jsonDecode(response.body);
     var p=loginuser["Items"][0]["password"]["S"];
     var q=loginuser["Items"][0]["username"]["S"];
-    print(q);
+    //print(q);
     //print(loginuser);
-    if(p.trim() !=password){
+    if(p.trim()==password){
       global.GlobalLoginUser=loginuser;
       //print(global.GlobalLoginUser);
       print("password is correct");
@@ -70,6 +70,10 @@ class _loginState extends State<login> {
     }
     else{
       print("password is uncorrect");
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context)=>dashboard())
+      );
+
     }
 
 

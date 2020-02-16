@@ -1,3 +1,4 @@
+import 'package:activator/reference.dart';
 import 'package:flutter/material.dart';
 import 'package:activator/Ui/CustomListTitle.dart';
 import 'package:activator/global.dart';
@@ -39,7 +40,12 @@ class _dashboardState extends State<dashboard> {
               ),
             ),
 
-            CustomListTitle(Icons.person,'Person',()=>{}),
+            CustomListTitle(Icons.person,'references',()=>{
+            Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => reference()),
+            )
+            }),
             CustomListTitle(Icons.notifications,'Notifications',()=>{}),
             CustomListTitle(Icons.settings,'Settings',()=>{}),
             CustomListTitle(Icons.lock,'Logout',()=>{}),

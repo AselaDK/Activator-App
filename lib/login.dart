@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
 import 'package:activator/dashboard.dart';
 import 'package:activator/global.dart' as global;
+import 'package:activator/Ui/CustomInputField.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -51,7 +52,7 @@ class _loginState extends State<login> {
     _formKey.currentState.save();
     //print(userName);
     print(password);
-    String ak=readerLogurl + userName;
+    String ak=Logurl + userName;
    // print(ak);
     var response=await http.get(Uri.encodeFull(ak), headers: {"Accept":"application/json"});
     var Reader_info_list = json.decode(response.body);
@@ -59,6 +60,7 @@ class _loginState extends State<login> {
     var p=loginuser["Items"][0]["password"]["S"];
     var q=loginuser["Items"][0]["username"]["S"];
     print(q);
+    print(p);
     //print(loginuser);
     if(p.trim() !=password){
       global.GlobalLoginUser=loginuser;
@@ -69,7 +71,13 @@ class _loginState extends State<login> {
       );
     }
     else{
-      print("password is uncorrect");
+//      print("password is uncorrect");
+//      global.GlobalLoginUser=loginuser;
+//      //print(global.GlobalLoginUser);
+//      print("password is correct");
+//      Navigator.push(context,
+//          MaterialPageRoute(builder: (context)=>dashboard())
+//      );
     }
 
 
@@ -123,46 +131,51 @@ class _loginState extends State<login> {
                     ),
 
 
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'userName',
+//                    Form(
+//                      key: _formKey,
+//                      child: Column(
+//                        children: <Widget>[
+//                          TextFormField(
+//                            decoration: InputDecoration(
+//                              labelText: 'userName',
+//
+//                            ),
+//                            validator: (value){
+//                              if(value.isEmpty){
+//                                return "reqired"; //display wennna one eka
+//                              }
+//                              return null;
+//
+//                            },
+//                            onSaved: (value){
+//                              value=value.trim();
+//                              userName=value;
+//                            },
+//
+//
+//
+//                          ),
+//                          TextFormField(
+//                            decoration: InputDecoration(
+//                                labelText: 'password'
+//                            ),
+//                            validator: (value){
+//                              if(value.isEmpty){
+//                                return 'required';
+//                              }
+//                              return null;
+//                            },
+//                            onSaved: (value){
+//                              value=value.trim();
+//                              password=value;
+//                            },
+//                          ),
+//                        ],
+//                      ),
+//                    ),
+                    CustomInputField(Icon(Icons.person,color: Colors.white,),'username'),
+                    CustomInputField(Icon(Icons.lock,color: Colors.white,),'password'),
 
-                            ),
-                            validator: (value){
-                              if(value.isEmpty){
-                                return "reqired"; //display wennna one eka
-                              }
-                              return null;
-
-                            },
-                            onSaved: (value){
-                              value=value.trim();
-                              userName=value;
-                            }
-                            ,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                                labelText: 'password'
-                            ),
-                            validator: (value){
-                              if(value.isEmpty){
-                                return 'required';
-                              }
-                              return null;
-                            },
-                            onSaved: (value){
-                              value=value.trim();
-                              password=value;
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
 
 
                     Container(

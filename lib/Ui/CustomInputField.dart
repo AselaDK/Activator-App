@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomInputField extends StatelessWidget{
+  final GlobalKey<FormState> _formKey=GlobalKey<FormState>();
+  String userName;
+  var password;
   Icon fieldIcon;
   String hintText;
   CustomInputField(this.fieldIcon,this.hintText);
@@ -12,6 +15,7 @@ class CustomInputField extends StatelessWidget{
     // TODO: implement build
     return  Container(
         width: 250,
+        //color: Colors.black,
 
 
         child:Material(  // meka gahanne textfild ekatai icon ekatai yatin
@@ -20,7 +24,6 @@ class CustomInputField extends StatelessWidget{
           elevation: 5.0,
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           color: Colors.lightGreen,
-
 
           //column eka athule thinne
 
@@ -39,25 +42,46 @@ class CustomInputField extends StatelessWidget{
                   borderRadius: BorderRadius.only(topRight: Radius.circular(10.0),bottomRight: Radius.circular(10.0)),
                 ),
                 width: 203,
-                height: 50,
+                height: 70,
                 child:Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: TextField(
+
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration: InputDecoration(
+                            hintText: hintText,
+                            border: InputBorder.none,
+                            fillColor: Colors.white,
+                            filled: true,
 
 
-                      decoration: InputDecoration(
+                          ),
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.black,
 
-                        border: InputBorder.none,
-                        hintText: hintText,
-                        fillColor: Colors.white,
-                        filled: true, //Meka damme naththam white kiyala penne naha
+                          ),
+                          validator: (value){
+                            if(value.isEmpty){
+                              return "reqired"; //display wennna one eka
+                            }
+                            return null;
+
+                          },
+                          onSaved: (value){
+                            value=value.trim();
+                            userName=value;
+                          },
 
 
-                      ),
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.black
-                      )
+
+                        ),
+
+                      ],
+                    ),
                   ),
                 ),
 
@@ -74,3 +98,39 @@ class CustomInputField extends StatelessWidget{
   }
 
 }
+
+
+//TextField(
+//
+//
+//decoration: InputDecoration(
+//
+//border: InputBorder.none,
+//hintText: hintText,
+//fillColor: Colors.white,
+//filled: true, //Meka damme naththam white kiyala penne naha
+//
+//
+//),
+//style: TextStyle(
+//fontSize: 20.0,
+//color: Colors.black
+//)
+//),
+
+
+//TextFormField(
+//decoration: InputDecoration(
+//labelText: 'password'
+//),
+//validator: (value){
+//if(value.isEmpty){
+//return 'required';
+//}
+//return null;
+//},
+//onSaved: (value){
+//value=value.trim();
+//password=value;
+//},
+//),

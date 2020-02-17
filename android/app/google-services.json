@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "994414251619",
+    "firebase_url": "https://activatorpushnotification.firebaseio.com",
+    "project_id": "activatorpushnotification",
+    "storage_bucket": "activatorpushnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994414251619:android:38d6d456c91b14d9f93256",
+        "android_client_info": {
+          "package_name": "com.codesundar.activator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994414251619-vevln30v8bjc4kkssok9uq44qeqtt19h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALCeF6g4o_Ay5E9UiTrw6agMANOSFi0B8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994414251619-vevln30v8bjc4kkssok9uq44qeqtt19h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

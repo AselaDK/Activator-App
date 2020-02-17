@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-class notification extends StatefulWidget {
+class settings extends StatefulWidget {
   @override
-  _notificationState createState() => _notificationState();
+  _settingsState createState() => _settingsState();
 }
 
-class _notificationState extends State<notification> {
+class _settingsState extends State<settings> {
 
   String _message = '';
 
